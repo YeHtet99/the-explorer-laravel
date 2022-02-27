@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('description');
-            $table->string('excerpt');
+            $table->text('excerpt');
             $table->string('cover');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

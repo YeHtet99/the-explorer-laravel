@@ -3,8 +3,26 @@
 
 // Variables
 @import 'variables';
+$primary:#096a71;
+$border-radius-lg:2rem;
+$border-radius:1rem;
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~venobox/dist/venobox.min.css";
+.user-img{
+    width: 40px;
+    height: 40px;
+
+}
+.cover-img{
+    height: 350px;
+    object-fit: cover;
+}
+.h-350{
+    height: 350px;
+}
+.post-detail{
+    white-space: pre-line;
+}
