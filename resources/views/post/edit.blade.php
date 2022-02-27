@@ -17,16 +17,25 @@
                     @csrf
                     @method('put')
                     <div class="form-floating rounded mb-4">
-                        <input type="text" class="form-control" value="{{ $post->title }}" name="title" id="postTitle" placeholder="no need">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title',$post->title) }}" name="title" id="postTitle" placeholder="no need">
                         <label for="postTitle">Post Title</label>
+                        @error('title')
+                        <div class="invalid-feedback ps-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-4">
-                        <input type="file" name="cover" id="cover" class="d-none">
-                        <img src="{{ asset('storage/cover/'.$post->cover) }}" alt="" id="cover-preview" class="w-100 rounded cover-img">
+                        <input type="file" name="cover" id="cover" class="d-none" accept="image/jpeg,image/png">
+                        <img src="{{ asset('storage/cover/'.$post->cover) }}" alt="" id="cover-preview" class="w-100 rounded cover-img  @error('cover') is-invalid border border-danger @enderror"">
+                        @error('cover')
+                        <div class="invalid-feedback ps-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-floating mb-4">
-                        <textarea class="form-control" name="description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 400px">{{ $post->description }}</textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror"" name="description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 400px">{{ old('description',$post->description) }}</textarea>
                         <label for="floatingTextarea2">Share Your Experience</label>
+                        @error('description')
+                        <div class="invalid-feedback ps-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="text-center">
                         <button class="btn btn-lg btn-primary ">

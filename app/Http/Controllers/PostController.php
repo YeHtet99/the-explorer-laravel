@@ -98,7 +98,7 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->slug=Str::slug($post->title,'-');
         $post->description=$request->description;
-        $post->excerpt=Str::words($request->description,150);
+        $post->excerpt=Str::words($post->description,150);
         if ($request->hasFile('cover')){
             //delete old cover
             Storage::delete('public/cover/'.$post>cover);

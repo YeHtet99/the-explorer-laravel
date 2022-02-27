@@ -16,16 +16,25 @@
                     <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-floating rounded mb-4">
-                            <input type="text" class="form-control" name="title" id="postTitle" placeholder="no need">
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="postTitle" placeholder="no need" value="{{ old('title') }}">
                             <label for="postTitle">Post Title</label>
+                            @error('title')
+                                <div class="invalid-feedback ps-2">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-4">
-                            <input type="file" name="cover" id="cover" class="d-none">
-                            <img src="{{ asset('default-img.png') }}" alt="" id="cover-preview" class="w-100 rounded cover-img">
+                            <input type="file" name="cover" id="cover" class="d-none" accept="image/jpeg,image/png">
+                            <img src="{{ asset('default-img.png') }}" alt="" id="cover-preview"  class="w-100 rounded cover-img @error('cover') is-invalid border border-danger @enderror">
+                            @error('cover')
+                            <div class="invalid-feedback ps-2">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-floating mb-4">
-                            <textarea class="form-control" name="description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 400px"></textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 400px">{{ old('description') }}</textarea>
                             <label for="floatingTextarea2">Share Your Experience</label>
+                            @error('description')
+                            <div class="invalid-feedback ps-2">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="text-center">
                             <button class="btn btn-lg btn-primary ">
