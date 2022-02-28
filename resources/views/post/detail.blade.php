@@ -11,7 +11,22 @@
                                 <h4 class="fw-bold mb-4">{{ $post->title }}</h4>
                                 <img src="{{ asset('storage/cover/'.$post->cover) }}" alt="" class="rounded-3 w-100 h-350 mb-4" style="object-fit: cover">
                                 <p class="text-black-50 mb-4 post-detail">{{ $post->description }}</p>
-                                <div class="mb-5">
+                                @isset($post->galleries)
+                                   <div class="gallery rounded border">
+                                       <div class="row g-4 py-4">
+                                           <h4 class="fw-bold text-center">Gallery</h4>
+                                               @foreach($post->galleries as $gallery)
+                                               <div class="col-lg-4 col-xl-3 d-flex align-items-center justify-content-center">
+
+                                                   <img src="{{ asset('storage/gallery/'.$gallery->photo) }}" class="gallery-photo">
+                                               </div>
+                                               @endforeach
+
+                                       </div>
+
+                                   </div>
+                                @endisset
+                                <div class="mb-5 mt-3">
                                     @auth()
                                     <h4 class="text-center fw-bold">User Comments</h4>
                                         @forelse($post->comments as $comment)

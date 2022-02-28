@@ -11312,3 +11312,11 @@ textarea.form-control-lg {
 .post-detail {
   white-space: pre-line;
 }
+
+.post .gallery-photo {
+  width: 150px;
+  height: 200px;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}

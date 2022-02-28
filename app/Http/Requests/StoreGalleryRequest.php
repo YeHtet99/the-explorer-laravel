@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class StoreGalleryRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreGalleryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class StoreGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "post_id"=>"required|exists:posts,id",
+            'galleries'=>"required",
+            'galleries.*'=>"required|mimes:jpeg,png|max:5000"
         ];
     }
 }

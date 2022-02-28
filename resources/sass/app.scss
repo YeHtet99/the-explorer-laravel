@@ -26,3 +26,9 @@ $border-radius:1rem;
 .post-detail{
     white-space: pre-line;
 }
+.post .gallery-photo{
+    width: 150px;
+    height: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+}

@@ -12,7 +12,7 @@ class CommentController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('auth')->only(['store','destroy']);
+         $this->middleware('auth')->only(['store','destroy']);
     }
 
     /**
