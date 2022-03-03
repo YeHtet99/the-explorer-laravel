@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,9 @@ Route::get('/detail/{slug}',[PageController::class,'detail'])->name('post.detail
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('post',\App\Http\Controllers\PostController::class);
 Route::resource('comment',\App\Http\Controllers\CommentController::class);
 Route::resource('gallery',\App\Http\Controllers\GalleryController::class);
+Route::get('edit-Profile',[HomeController::class,'editProfile'])->name('edit-Profile');
+Route::post('update-Profile',[HomeController::class,'updateProfile'])->name('update-Profile');

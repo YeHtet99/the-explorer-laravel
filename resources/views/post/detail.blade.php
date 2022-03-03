@@ -11,14 +11,17 @@
                                 <h4 class="fw-bold mb-4">{{ $post->title }}</h4>
                                 <img src="{{ asset('storage/cover/'.$post->cover) }}" alt="" class="rounded-3 w-100 h-350 mb-4" style="object-fit: cover">
                                 <p class="text-black-50 mb-4 post-detail">{{ $post->description }}</p>
-                                @isset($post->galleries)
+                                @if($post->galleries->count())
                                    <div class="gallery rounded border">
                                        <div class="row g-4 py-4">
                                            <h4 class="fw-bold text-center">Gallery</h4>
                                                @foreach($post->galleries as $gallery)
                                                <div class="col-lg-4 col-xl-3 d-flex align-items-center justify-content-center">
 
-                                                   <img src="{{ asset('storage/gallery/'.$gallery->photo) }}" class="gallery-photo">
+
+                                                   <a class="venobox" data-gall="Lalisa" href="{{ asset('storage/gallery/'.$gallery->photo) }}">
+                                                       <img src="{{ asset('storage/gallery/'.$gallery->photo) }}" class="gallery-photo">
+                                                   </a>
                                                </div>
                                                @endforeach
 

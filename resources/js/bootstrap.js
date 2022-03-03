@@ -2,7 +2,7 @@ window._ = require('lodash');
 
 try {
     require('bootstrap');
-    window.VenoBox=require("venobox");
+    window.VenoBox=require('venobox/dist/venobox.min');
 } catch (e) {}
 
 /**
