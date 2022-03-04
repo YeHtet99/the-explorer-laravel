@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index(){
-        $posts=Post::latest('id')->get();
+        $posts=Post::latest('id')->paginate(10);
         return view('index',compact('posts'));
     }
     public function detail($slug){

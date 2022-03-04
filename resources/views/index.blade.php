@@ -51,6 +51,9 @@
                         @endforelse
 
                     </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
 
 

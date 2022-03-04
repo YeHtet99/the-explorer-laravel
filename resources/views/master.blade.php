@@ -39,7 +39,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('edit-Profile') }}">Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="{{ route('change-Password') }}">Change Password</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a></li>
@@ -54,8 +54,11 @@
 </nav>
 <div class="py-5"></div>
 @yield('content')
+<div class="py-5 bg-primary text-light text-center">
+    &copy; {{ date('Y') }} Ye Htet .All Right Reversed
+</div>
 <script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')
-<div class="py-5 bg-primary"></div>
+
 </body>
 </html>

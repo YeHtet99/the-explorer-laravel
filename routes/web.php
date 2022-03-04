@@ -26,3 +26,6 @@ Route::resource('comment',\App\Http\Controllers\CommentController::class);
 Route::resource('gallery',\App\Http\Controllers\GalleryController::class);
 Route::get('edit-Profile',[HomeController::class,'editProfile'])->name('edit-Profile');
 Route::post('update-Profile',[HomeController::class,'updateProfile'])->name('update-Profile');
+Route::get('change-Password',[HomeController::class,'changePassword'])->name('change-Password');
+Route::post('update-Password',[HomeController::class,'updatePassword'])->name('update-Password');
+

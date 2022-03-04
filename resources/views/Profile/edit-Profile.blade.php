@@ -6,6 +6,7 @@
             <div class="d-flex justify-content-center">
             <div class="col-lg-6 col-xl-5">
                 <div class="text-center mb-3">
+                    <h4>Edit Profile</h4>
                     <img src="{{ auth()->user()->photo }}" alt="" class="profile-img">
                     <p class="mb-0">{{ auth()->user()->name }}</p>
                     <p class="mb-0">{{ auth()->user()->email }}</p>
@@ -14,9 +15,12 @@
                     @csrf
                     <input type="file" name="photo" accept="image/jpeg,image/png" class="d-none">
                     <div class="form-floating mb-3">
-                        <input type="text" name="name" class="form-control" id="YourName" value="{{ auth()->user()->name }}" placeholder="name@example.com">
+                        <input type="text" name="name" class="@error('name') is-invalid @enderror form-control" id="YourName" value="{{ auth()->user()->name }}" placeholder="name@example.com">
                         <label for="YourName">Your Name</label>
                     </div>
+                    @error('name')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                     <div class="form-floating mb-3">
                         <input type="text" disabled class="form-control" id="floatingPassword"value="{{ auth()->user()->email }}" placeholder="Password">
                         <label for="floatingPassword">Your Email</label>
