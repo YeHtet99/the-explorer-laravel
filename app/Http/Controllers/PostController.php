@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PostMail;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -58,6 +60,13 @@ class PostController extends Controller
         $post->cover=$newName;
         $post->user_id=Auth::id();
         $post->save();
+
+        $mailUsers=["yemyinthtet99999@gmail.com",'ayenyeint467@gmail.com'];
+        foreach ($mailUsers as $mailUser){
+            Mail::to($mailUser)->later(now()->addSecond(10),new PostMail($post));
+        }
+
+
         return redirect()->route('index');
     }
 
