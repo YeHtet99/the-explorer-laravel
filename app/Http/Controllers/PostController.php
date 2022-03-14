@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateFile;
 use App\Mail\PostMail;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 
 class PostController extends Controller
@@ -52,6 +54,10 @@ class PostController extends Controller
 
         $newName="cover_".uniqid().".".$request->file('cover')->extension();
         $request->file('cover')->storeAs('public/cover',$newName);
+
+        CreateFile::dispatch($newName)->delay(now()->addSecond(10));
+
+
         $post=new Post();
         $post->title=$request->title;
         $post->slug=Str::slug($post->title,'-');

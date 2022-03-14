@@ -21,7 +21,7 @@ Route::get('job-test',[PageController::class,'jobtest']);
 
 Auth::routes(['verify'=>true]);
 
-Route::middleware('verify')->group(function (){
+
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('post',\App\Http\Controllers\PostController::class);
     Route::resource('comment',\App\Http\Controllers\CommentController::class);
@@ -31,6 +31,6 @@ Route::middleware('verify')->group(function (){
     Route::get('change-Password',[HomeController::class,'changePassword'])->name('change-Password');
     Route::post('update-Password',[HomeController::class,'updatePassword'])->name('update-Password');
 
-});
+
 
 
